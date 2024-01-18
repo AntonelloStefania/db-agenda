@@ -1,9 +1,9 @@
 <?php
-include '../../class/Obligation.php';
-include '../../class/ObligationDAO.php';
-include '../../controller/ObligationController.php';
-include '../../server.php';
-include '../../head.php';
+include_once '../../class/Obligation.php';
+include_once '../../class/ObligationDAO.php';
+include_once '../../controller/ObligationController.php';
+include_once '../../server.php';
+include_once '../../head.php';
 
 $obligationDao = new ObligationDAO($connection);
 $obligationController = new ObligationController($obligationDao);
@@ -67,7 +67,7 @@ $connection->close();
             </table>
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content p-4">
                         <!-- show.php -->
                     </div>

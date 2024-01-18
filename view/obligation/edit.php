@@ -1,9 +1,9 @@
 <?php
-include '../../class/Obligation.php';
-include '../../class/ObligationDAO.php';
-include '../../controller/ObligationController.php';
-include '../../server.php';
-include '../../head.php';
+include_once '../../class/Obligation.php';
+include_once '../../class/ObligationDAO.php';
+include_once '../../controller/ObligationController.php';
+include_once '../../server.php';
+include_once '../../head.php';
 
 $obligationDao = new ObligationDAO($connection);
 $obligationController = new ObligationController($obligationDao);

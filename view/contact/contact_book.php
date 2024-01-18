@@ -1,9 +1,9 @@
 <?php
-include("../../class/Contact.php");
-include("../../class/ContactDAO.php");
-include("../../controller/ContactController.php");
-include("../../server.php");
-include("../../head.php");
+include_once("../../class/Contact.php");
+include_once("../../class/ContactDAO.php");
+include_once("../../controller/ContactController.php");
+include_once("../../server.php");
+include_once("../../head.php");
 
 $contactDao = new ContactDao($connection);
 $contactController = new ContactController($contactDao);
@@ -24,7 +24,7 @@ $connection->close();
 
 
 <body>
-    <div class="wrapper">
+    <div class="wrapper" id="contactTableContainer">
         <?php include '../../sidebar.php' ?>
         <div id="content">
             <div class="col-12 text-center">
@@ -40,50 +40,37 @@ $connection->close();
                     </div>
                     <div class="col-md-6">
                         <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
+
                             <div>
-                                <ul class="nav nav-pills">
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="top"
-                                            title="List"><i class="bx bx-list-ul"></i></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a aria-current="page" href="#"
-                                            class="router-link-active router-link-exact-active nav-link active"
-                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Grid"><i
-                                                class="bx bx-grid-alt"></i></a>
-                                    </li>
-                                </ul>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                    data-bs-target=".add-new" class="btn btn-primary"><i class="bx bx-plus me-1"></i>
+                                    Add New</a>
                             </div>
-                            <div>
-                                <a href="#" data-bs-toggle="modal" data-bs-target=".add-new" class="btn btn-primary"><i
-                                        class="bx bx-plus me-1"></i> Add New</a>
-                            </div>
-                            <div class="dropdown">
-                                <a class="btn btn-link text-muted py-1 font-size-16 shadow-none dropdown-toggle"
-                                    href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i
-                                        class="bx bx-dots-horizontal-rounded"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
+                            <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog  modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <?php include 'create.php' ?>
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row ">
                     <?php foreach ($contacts as $contact): ?>
                         <div class="col-xl-3 col-sm-6">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="dropdown float-end">
-                                        <a class="text-muted dropdown-toggle font-size-16" href="#" role="button"
-                                            data-bs-toggle="dropdown" aria-haspopup="true"><i
-                                                class="bx bx-dots-horizontal-rounded"></i></a>
-                                        <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item"
-                                                href="#">Edit</a><a class="dropdown-item" href="#">Action</a><a
-                                                class="dropdown-item" href="#">Remove</a></div>
-                                    </div>
+
                                     <div class="d-flex align-items-center">
                                         <div><img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt=""
                                                 class="avatar-md rounded-circle img-thumbnail" /></div>
@@ -129,16 +116,14 @@ $connection->close();
                     </div>
                 </div>
             </div>
-            <div class="col-12 text-center my-5">
 
-                <a href="create.php" class="btn btn-primary">Create New Obligation</a>
-            </div>
         </div>
     </div>
 </body>
 
 
 </html>
+
 
 <style scoped>
     .card {
